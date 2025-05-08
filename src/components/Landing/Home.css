@@ -1,0 +1,247 @@
+/* Nebula-2 font */
+@font-face {
+  font-family: 'Nebula';
+  src: url('../assets/nebula_2/Nebula-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Monwalk font */
+@font-face {
+  font-family: 'Moonwalk';
+  src: url('../assets/Moon Walk Font/Moon Walk.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* General Styles */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url("../assets/Untitled design (2)_LE_upscale_magic_x4_strength_100_similarity_100.jpg");
+  background-size: cover;
+  color: #fff;
+  overflow: hidden;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 18rem;
+  font-family: 'Moonwalk';
+  font-size: 1rem;
+  margin-top: -10rem;
+  width: 100%;
+  padding: 1rem 0rem;
+  text-align: center;
+}
+
+footer {
+  background-color: #111;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+a {
+  color: #fff;
+}
+
+a:hover {
+  color: #fff;
+}
+
+/* Hero Section */
+#hero {
+  font-family: 'Moonwalk';
+  margin-left: 2.5rem;
+  margin-top: 5rem;
+}
+
+/* CTA Section */
+#cta {
+  text-align: center;
+}
+
+/* CTA Button */
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
+}
+
+/* Footer */
+footer {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+#shade {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#register {
+  position: fixed;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Moonwalk';
+  background-color: #111;
+  width: 30%;
+  height: auto;
+  min-height: 30%;
+  border: solid 0.1rem #fff;
+  border-radius: 4px;
+  text-align: center;
+  animation: drop 500ms ease forwards;
+  padding: 2rem;
+}
+
+#register h1 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+#register input {
+  font-family: 'Moonwalk';
+  color: #fff;
+  border: 1px solid #fff;
+  background-color: transparent;
+  border-radius: 4px;
+  padding: 0.5rem;
+  width: 60%;
+  margin-top: 0.5rem;
+  transition: border-color 0.3s ease;
+}
+
+#register input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+#register label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+#register #submit {
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  width: auto;
+  margin-top: 1rem;
+}
+
+#register #submit:hover {
+  background-color: #000;
+}
+
+#register .error-message {
+  color: #ff6b6b;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  min-height: 1.2rem;
+}
+
+#register #remover {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  line-height: 1;
+}
+
+#register #remover:hover {
+  color: #ff6b6b;
+}
+
+@keyframes drop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(-50%, -45%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.home-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #000000, #1a1a2e);
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+.home-container h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, #ffd700, #ff6b6b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.home-container p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #a8a8a8;
+}
+
+.explore-button {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background: linear-gradient(45deg, #ffd700, #ff6b6b);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.explore-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+} 
