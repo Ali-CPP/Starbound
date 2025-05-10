@@ -3,7 +3,7 @@ import { useFrame } from '@react-three/fiber';
 import { Sphere, Ring, Stars, Text } from '@react-three/drei';
 import * as THREE from 'three';
 
-// Basic setup
+// Basics (affect all)
 const SUN_RADIUS = 25;
 const ELLIPTICAL_FACTOR = 0.1;
 const BASE_LABEL_SIZE = 7;
@@ -11,17 +11,16 @@ const MIN_LABEL_SIZE = 3;
 const MAX_LABEL_SIZE = 300;
 const SUN_MAX_LABEL_SIZE = 10000;
 
-// Visibility settings
+// Visibility
 const MIN_SCALE_DISTANCE = 50;
 const MAX_SCALE_DISTANCE = 500;
 const INNER_PLANETS_HIDE_DISTANCE = 1569;
 const OUTER_PLANETS_HIDE_DISTANCE = 4800;
 
-// Planet groups
 const INNER_PLANETS = ['mercury', 'venus', 'earth', 'mars'];
 const OUTER_PLANETS = ['jupiter', 'saturn', 'uranus', 'neptune'];
 
-// Real orbital periods in seconds
+// orbitals in seconds
 const ORBITAL_PERIODS = {
   mercury: 87.97 * 24 * 60 * 60,
   venus: 224.7 * 24 * 60 * 60,
@@ -33,7 +32,7 @@ const ORBITAL_PERIODS = {
   neptune: 60182 * 24 * 60 * 60
 };
 
-// Real rotation periods in hours
+// rotation in hours
 const ROTATION_PERIODS = {
   mercury: 1407.6,
   venus: 5832.5,
@@ -45,7 +44,7 @@ const ROTATION_PERIODS = {
   neptune: 16.11
 };
 
-// Calculate where planets should be right now
+// Calculate planets' current position
 const calculateCurrentPosition = (period) => {
   const now = new Date();
   const secondsSinceEpoch = now.getTime() / 1000;
@@ -53,7 +52,7 @@ const calculateCurrentPosition = (period) => {
   return (orbitsCompleted % 1) * Math.PI * 2;
 };
 
-// Calculate how fast planets should spin
+// Calculate planets' speed
 const calculateRotationSpeed = (periodInHours) => {
   return 2 * Math.PI / (periodInHours * 60 * 60);
 };
@@ -64,13 +63,11 @@ const LABEL_OFFSET = {
   jupiter: 20, saturn: 20, uranus: 20, neptune: 20
 };
 
-// Planet colors
 const PLANET_COLORS = {
   mercury: '#8c8c8c', venus: '#e6b800', earth: '#4b9fe3', mars: '#ff6b4d',
   jupiter: '#e3a372', saturn: '#f4d03f', uranus: '#73c2fb', neptune: '#3498db'
 };
 
-// Planet data
 const PLANET_DATA = {
   sun: { 
     radius: SUN_RADIUS, 
@@ -153,7 +150,7 @@ const PLANET_DATA = {
   }
 };
 
-// Draw orbit paths
+// Orbit paths
 const OrbitRing = ({ radius, isHovered, planetName }) => {
   const curve = new THREE.EllipseCurve(0, 0, radius, radius * (1 - ELLIPTICAL_FACTOR), 0, 2 * Math.PI, false, 0);
   const points = curve.getPoints(256);
@@ -171,7 +168,7 @@ const OrbitRing = ({ radius, isHovered, planetName }) => {
   );
 };
 
-// Moon component
+// Moon
 const Moon = ({ data, isHovered }) => {
   const moonRef = useRef();
   const orbitRef = useRef();

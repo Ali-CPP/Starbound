@@ -4,53 +4,21 @@ import './Home.css';
 
 const Home = () => {
   const [showRegister, setShowRegister] = useState(false);
-  const [formData, setFormData] = useState({
-    username: '',
-    password: ''
-  });
-  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleUserClick = () => {
     setShowRegister(true);
-    setError('');
   };
 
   const handleCloseRegister = () => {
     setShowRegister(false);
-    setError('');
-    setFormData({ username: '', password: '' });
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setError('');
-
-    // Basic validation
-    if (!formData.username.trim()) {
-      setError('Please enter your astronaut name');
-      return;
-    }
-    if (!formData.password.trim()) {
-      setError('Please enter your secret code');
-      return;
-    }
-    if (formData.password.length < 6) {
-      setError('Secret code must be at least 6 characters');
-      return;
-    }
 
     // Here you would typically make an API call to authenticate
     // For now, we'll just store the username in localStorage and navigate
-    localStorage.setItem('astronautName', formData.username);
     navigate('/galaxy');
   };
 
@@ -81,8 +49,6 @@ const Home = () => {
                   <input 
                     type="text" 
                     name="username" 
-                    value={formData.username}
-                    onChange={handleInputChange}
                     required 
                   />
                 </div>
@@ -92,17 +58,9 @@ const Home = () => {
                   <input 
                     type="password" 
                     name="password" 
-                    value={formData.password}
-                    onChange={handleInputChange}
                     required 
                   />
                 </div>
-
-                {error && (
-                  <div style={{ color: '#ff6b6b', marginBottom: '1rem', fontSize: '0.9rem' }}>
-                    {error}
-                  </div>
-                )}
 
                 <div style={{ marginBottom: '1rem' }}>
                   <input type="submit" id="submit" value="Roam the galaxy" />
