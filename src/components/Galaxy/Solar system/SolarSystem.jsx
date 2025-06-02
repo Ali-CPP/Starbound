@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Sphere, Ring, Stars, Text } from '@react-three/drei';
 import * as THREE from 'three';
+import Widget from '../../Widget';
 
 // Basics (affect all)
 const SUN_RADIUS = 25;
@@ -271,7 +272,7 @@ const PlanetLabel = ({ name }) => {
 };
 
 // Main planet component
-const Planet = ({ name, data }) => {
+const Planet = ({ name, data, onClick }) => {
   const planetRef = useRef();
   const orbitRef = useRef();
   const time = useRef(data.initialAngle);
@@ -316,13 +317,18 @@ const Planet = ({ name, data }) => {
         <Sphere
           args={[data.radius * 2, 32, 32]}
           onPointerOver={() => {
-            setIsHovered(true);
-            document.body.style.cursor = 'pointer';
+            if (name !== 'sun') {
+              setIsHovered(true);
+              document.body.style.cursor = 'pointer';
+            }
           }}
           onPointerOut={() => {
-            setIsHovered(false);
-            document.body.style.cursor = 'auto';
+            if (name !== 'sun') {
+              setIsHovered(false);
+              document.body.style.cursor = 'auto';
+            }
           }}
+          onClick={name !== 'sun' ? onClick : undefined}
         >
           <meshBasicMaterial visible={false} />
         </Sphere>
@@ -377,14 +383,19 @@ const Planet = ({ name, data }) => {
 };
 
 // Main solar system component
-const SolarSystem = () => {
+const SolarSystem = ({ onPlanetSelect }) => {
   return (
     <>
       <group>
         <Stars radius={10000} depth={5000} count={7000} factor={10} saturation={0.5} fade speed={0.5} />
         {Object.entries(PLANET_DATA).map(([name, data]) => {
           if (name !== 'moon') {
-            return <Planet key={name} name={name} data={data} />;
+            return <Planet 
+              key={name} 
+              name={name} 
+              data={data} 
+              onClick={() => onPlanetSelect(name)}
+            />;
           }
           return null;
         })}

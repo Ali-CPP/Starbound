@@ -1,0 +1,47 @@
+.widget-container {
+  position: fixed;
+  top: 5%;
+  left: -1%;
+  width: 60vh;
+  height: 90%;
+  background-color: rgba(124, 119, 119, 0.8);
+  border-radius: 4px;
+  padding: 20px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #000000;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.widget-container.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.title {
+  text-align: center; 
+  font-size: 2em;
+  color: #000000;
+}
+
+.play-button {
+  background-color: #3D2A2A;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  width: 60%;
+  margin-left: 18%;
+  margin-bottom: 3vh;
+  color: #f1f1f1;
+}
+
+.play-button:hover {
+  background-color: #342323;
+  transition: all 0.1s ease;
+} 
