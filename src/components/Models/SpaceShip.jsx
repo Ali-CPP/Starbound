@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 const SpaceShip = (props) => {
-  const { nodes, materials } = useGLTF('/public/models/SpaceShip/scene.gltf')
+  const { nodes, materials } = useGLTF('/models/SpaceShip/scene.gltf')
   return (
     <group {...props} dispose={null}>
       <group scale={0.01}>
@@ -26,4 +26,4 @@ const SpaceShip = (props) => {
 }
 
 export default SpaceShip;
-useGLTF.preload('/public/models/SpaceShip/scene.gltf')
+useGLTF.preload('/models/SpaceShip/scene.gltf')

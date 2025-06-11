@@ -7,6 +7,7 @@ import CanvasLoader from '../../Galaxy/CanvasLoader';
 
 const Mission001 = () => {
   const cameraRef = useRef();
+  const spaceshipRef = useRef();
   const [nitroLevel, setNitroLevel] = useState(0);
   const [isWPressed, setIsWPressed] = useState(false);
   const [showLevel, setShowLevel] = useState(false);
@@ -146,8 +147,8 @@ const Mission001 = () => {
     const audio1 = new Audio();
     const audio2 = new Audio();
     
-    audio1.src = '/public/assets/SpaceShipIdlee.mp3';
-    audio2.src = '/public/assets/SpaceShipIdlee.mp3';
+    audio1.src = '/assets/SpaceShipIdlee.mp3';
+    audio2.src = '/assets/SpaceShipIdlee.mp3';
     
     audio1.loop = false;
     audio2.loop = false;
@@ -161,7 +162,7 @@ const Mission001 = () => {
 
     // Create new audio for W key press
     const wKeySound = new Audio();
-    wKeySound.src = '/public/assets/SpaceShipTakeOff.mp3';
+    wKeySound.src = '/assets/SpaceShipTakeOff.mp3';
     wKeySound.volume = 1;
     wKeySound.loop = false;
 
@@ -248,16 +249,16 @@ const Mission001 = () => {
     }
 
     const moveStep = () => {
-      const currentZ = spaceshipRef.current.z;
+      const currentZ = spaceshipZ;
       const newZ = currentZ + stepSize;
       
       // Update spaceship position
-      spaceshipRef.current.z = newZ;
+      setSpaceshipZ(newZ);
       
       // Update camera to follow spaceship
       if (cameraRef.current) {
         const controls = cameraRef.current;
-        controls.target.set(spaceshipRef.current.x, spaceshipRef.current.y + 5, newZ);
+        controls.target.set(0, 5, newZ);
         controls.update();
       }
 
